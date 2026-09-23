@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>HEMS</title>
+<style>
+body{margin:0;background:#0b0d10;color:white;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+main{max-width:520px;margin:auto;padding:24px 18px 40px}h1{font-size:34px;margin:4px 0}
+.sub,.label{color:#9da4ad}.card{background:#15181d;border:1px solid #242932;border-radius:22px;padding:20px;margin:14px 0}
+.big{font-size:42px;font-weight:700}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.value{font-size:25px;font-weight:650;margin-top:5px}.badge{background:#20252c;padding:6px 10px;border-radius:99px;font-size:12px}
+.row{display:flex;justify-content:space-between;align-items:center}.footer{text-align:center;color:#737b86;font-size:12px}
+</style></head>
+<body><main>
+<div class="row"><div><h1>HEMS</h1><div class="sub">Zonne-energie</div></div><span class="badge">Demo</span></div>
+<section class="card"><div class="label">Huidige zonneproductie</div><div class="big"><span id="pv">—</span> kW</div><div class="label">PV-installatie: 4 kWp</div></section>
+<div class="grid">
+<section class="card"><div class="label">Vandaag</div><div class="value"><span id="today">—</span> kWh</div></section>
+<section class="card"><div class="label">Opbrengst vandaag</div><div class="value">€ <span id="rev">—</span></div></section>
+</div>
+<section class="card"><div class="label">Opbrengsten</div>
+<p>Deze maand: <strong>€ <span id="month">—</span></strong></p>
+<p>Totaal: <strong>€ <span id="total">—</span></strong></p></section>
+<section class="card"><div class="label">Volgende uitbreidingen</div>
+<p>☀️ Elekeeper live data</p><p>⚡ Tibber</p><p>🔋 2× Marstek Venus E V3</p></section>
+<div class="footer">HEMS eerste versie · demo-data</div>
+</main>
+<script>
+fetch('/api/solar').then(r=>r.json()).then(d=>{
+pv.textContent=d.pv_kw.toFixed(2);today.textContent=d.today_kwh.toFixed(2);
+rev.textContent=d.today_revenue.toFixed(2);month.textContent=d.month_revenue.toFixed(2);
+total.textContent=d.total_revenue.toFixed(2);
+});
+</script></body></html>
