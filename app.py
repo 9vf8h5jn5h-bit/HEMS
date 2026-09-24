@@ -7,7 +7,7 @@ BASE = Path(__file__).parent
 
 @app.get("/")
 def index():
-    return FileResponse(BASE / "static" / "index.html")
+    return FileResponse(BASE / "index.html")
 
 @app.get("/api/solar")
 def solar():
