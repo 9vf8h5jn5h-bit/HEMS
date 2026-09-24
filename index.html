@@ -28,9 +28,5 @@ main{max-width:520px;margin:auto;padding:24px 18px 40px}h1{font-size:34px;margin
 <div class="footer">HEMS eerste versie · demo-data</div>
 </main>
 <script>
-fetch('/api/solar').then(r=>r.json()).then(d=>{
-pv.textContent=d.pv_kw.toFixed(2);today.textContent=d.today_kwh.toFixed(2);
-rev.textContent=d.today_revenue.toFixed(2);month.textContent=d.month_revenue.toFixed(2);
-total.textContent=d.total_revenue.toFixed(2);
-});
+
 </script></body></html>
