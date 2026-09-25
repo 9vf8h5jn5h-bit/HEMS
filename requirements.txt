@@ -1,0 +1,5 @@
+fastapi
+
+uvicorn[standard]
+
+pysaj-elekeeper==0.0.10
